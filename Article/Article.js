@@ -129,6 +129,12 @@ const data = [
 */
 
 
+const articles = document.querySelector('.articles');
+
+data.forEach(data => {
+  articles.appendChild(createArticle(data));
+})
+
 function createArticle(articleInfo) {
   const article = document.createElement('div');
   const title = document.createElement('h2');
@@ -151,7 +157,7 @@ function createArticle(articleInfo) {
   firstParagraph.textContent = articleInfo.firstParagraph;
   secondParagraph.textContent = articleInfo.secondParagraph;
   thirdParagraph.textContent = articleInfo.thirdParagraph;
-  button.textContent = 'Open';
+  button.textContent = 'Read Article';
 
   article.classList.add('article');
   title.classList.add('title');
@@ -164,9 +170,3 @@ function createArticle(articleInfo) {
 
   return article
 }
-
-const articles = document.querySelector('.articles');
-
-data.forEach(data => {
-  articles.appendChild(createArticle(data));
-})
