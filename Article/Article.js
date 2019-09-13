@@ -85,7 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'I am Software Dev!',
+    date: 'Sept 10th, 2019',
+    firstParagraph: `Must go faster. Do you have any idea how long it takes those cups to decompose. You're a very talented young man, 
+          with your own clever thoughts and ideas. Do you need a manager? They're using our own satellites against us. And the clock is ticking. Just my luck, no ice. `,
+
+    secondParagraph: `Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? I gave it a cold? I gave it a virus. A computer virus. 
+          Hey, you know how I'm, like, always trying to save the planet? Here's my chance. You really think you can fly that thing? `,
+
+    thirdParagraph: `Must go faster... go, go, go, go, go! Remind me to thank John for a lovely weekend. Hey, take a look at the earthlings. 
+        Goodbye! Checkmate... You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager? What do they got in there? King Kong?`
   }
+   
+
+
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +127,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+const articles = document.querySelector('.articles');
+
+data.forEach(data => {
+  articles.appendChild(createArticle(data));
+})
+
+function createArticle(articleInfo) {
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const firstParagraph = document.createElement('p')
+  const secondParagraph = document.createElement('p')
+  const thirdParagraph = document.createElement('p')
+  const button = document.createElement('span');
+
+  article.appendChild(button);
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+ 
+  
+  title.textContent = articleInfo.title;
+  date.textContent = articleInfo.date;
+  firstParagraph.textContent = articleInfo.firstParagraph;
+  secondParagraph.textContent = articleInfo.secondParagraph;
+  thirdParagraph.textContent = articleInfo.thirdParagraph;
+  button.textContent = 'Read Article';
+
+  article.classList.add('article');
+  title.classList.add('title');
+  date.classList.add('date');
+  button.classList.add('expandButton');
+
+  button.addEventListener('click', (event) => {
+    article.classList.toggle('article-open');
+  })
+
+  return article
+}
